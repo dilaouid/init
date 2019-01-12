@@ -1,1 +1,1 @@
-ifconfig getifadress en0
+ifconfig en0
