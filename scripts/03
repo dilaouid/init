@@ -1,0 +1,12 @@
+if (( $# < 2 )); then
+	echo "Wrong number of parameters"
+	exit 1
+fi
+git add ${*%${!#}}
+read -p "Commit? (the commit will be your last arg) [y/n] " yn
+case $yn in
+    [Yy]* ) git commit -m "${@:$#}"; exit;;
+    [Nn]* ) exit;;
+    * ) echo "Please answer y or n.";;
+esac
+git push
