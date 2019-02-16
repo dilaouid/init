@@ -5,8 +5,13 @@ fi
 git add ${*%${!#}}
 read -p "Commit? (the commit will be your last arg) [y/n] " yn
 case $yn in
-    [Yy]* ) git commit -m "${@:$#}"; exit;;
-    [Nn]* ) exit;;
-    * ) echo "Please answer y or n.";;
+	[Yy]* ) git commit -m "${@:$#}";;
+	[Nn]* ) exit;;
+	* ) echo "Please answer y or n";;
 esac
-git push
+read -p "Push it? [y/n] " yn
+case $yn in
+	[Yy]* ) git push; exit;;
+	[Nn]* ) exit;;
+	* ) echo "Please answer y or n";;
+esac
